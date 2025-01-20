@@ -1,2 +1,2 @@
 # platform
-All Code the support all Apps
+All Code that support all Apps
