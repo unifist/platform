@@ -1,0 +1,25 @@
+apiVersion: databases.digitalocean.com/v1alpha1
+kind: DatabaseCluster
+metadata:
+  name: scratch
+  namespace: scratch
+spec:
+  engine: mysql
+  name: scratch
+  version: '8'
+  numNodes: 1
+  size: db-s-1vcpu-1gb
+  region: nyc2
+
+---
+apiVersion: databases.digitalocean.com/v1alpha1
+kind: DatabaseUser
+metadata:
+  name: scratch
+  namespace: scratch
+spec:
+  databaseCluster:
+    apiGroup: databases.digitalocean.com
+    kind: DatabaseCluster
+    name: scratch
+  username: scratch
