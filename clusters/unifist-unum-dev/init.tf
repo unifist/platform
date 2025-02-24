@@ -8,7 +8,7 @@ terraform {
     }
 
     bucket = "unifist-terraform-state"
-    key    = "unifist/platform/clusters/unifist-unum-dev"
+    key    = "unifist/platform/clusters/unifist-unum-dev/doks"
 
     # Deactivate a few AWS-specific checks
     skip_credentials_validation = true
