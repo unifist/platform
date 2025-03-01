@@ -12,7 +12,7 @@ resource "kubernetes_config_map_v1" "config" {
 
   data = {
     "unum.json" = jsonencode({
-        "name"     = "dev"
+        "name"     = "skunk"
         "location" = "do"
     })
   }
