@@ -6,8 +6,8 @@ spec:
   project: ledger
   source:
     repoURL: https://github.com/unifist/platform
-    path: unums/dev/apps/ledger
-    targetRevision: HEAD
+    path: unums/skunk/apps/ledger
+    targetRevision: argocd-do-build
   destination:
     server: https://kubernetes.default.svc
     namespace: ledger
