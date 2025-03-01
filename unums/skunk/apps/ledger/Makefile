@@ -13,7 +13,7 @@ init: tfenv
 remote:
 	kubectx ${CLUSTER}
 	@open "http://localhost:${LOCAL_PORT}"
-	kubectl port-forward -n ${NAMESPACE} service/${SERVICE} ${SERVICE}:http
+	kubectl port-forward -n ${NAMESPACE} service/${SERVICE} ${LOCAL_PORT}:http
 
 install: init
 	terraform apply

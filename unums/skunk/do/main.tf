@@ -21,6 +21,15 @@ resource "digitalocean_database_cluster" "mysql" {
   engine     = "mysql"
   version    = "8"
   size       = "db-s-1vcpu-1gb"
-  region     = "nyc1"
+  region     = "nyc3"
   node_count = 1
+}
+
+resource "digitalocean_database_firewall" "cluster" {
+  cluster_id = digitalocean_database_cluster.mysql.id
+
+  rule {
+    type  = "k8s"
+    value = digitalocean_kubernetes_cluster.cluster.id
+  }
 }
