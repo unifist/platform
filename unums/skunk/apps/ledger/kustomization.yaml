@@ -4,10 +4,14 @@ resources:
 - https://github.com/unum-apps/ledger/kubernetes/base?ref=0.1.1
 images:
 - name: unum-apps-ledger-api
+  newName: gaf3/unum-apps-ledger-api
   newTag: 0.1.1
 - name: unum-apps-ledger-cron
+  newName: gaf3/unum-apps-ledger-cron
   newTag: 0.1.1
 - name: unum-apps-ledger-daemon
+  newName: gaf3/unum-apps-ledger-daemon
   newTag: 0.1.1
 - name: unum-apps-ledger-gui
+  newName: gaf3/unum-apps-ledger-gui
   newTag: 0.1.1
