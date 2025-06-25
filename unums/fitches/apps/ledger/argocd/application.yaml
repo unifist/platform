@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/unifist/platform
     path: unums/fitches/apps/ledger
-    targetRevision: HEAD
+    targetRevision: fitches-do-unum-1750802757
   destination:
     server: https://kubernetes.default.svc
     namespace: ledger
