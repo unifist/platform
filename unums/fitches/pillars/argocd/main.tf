@@ -10,7 +10,7 @@ resource "kubernetes_namespace" "namespace" {
 
   provisioner "local-exec" {
     when    = destroy
-    command = "kubectl delete -k crd/"
+    command = "kubectl delete -k crd/ || exit 0"
   }
 }
 
