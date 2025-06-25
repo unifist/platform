@@ -1,16 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: feelz
+  name: discord
+  namespace: argocd
 spec:
-  project: feelz
+  project: discord
   source:
     repoURL: https://github.com/unifist/platform
-    path: unums/fitches/apps/feelz
+    path: unums/fitches/origins/discord
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: feelz
+    namespace: discord
   syncPolicy:
     automated:
       prune: true

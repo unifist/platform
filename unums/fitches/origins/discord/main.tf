@@ -18,30 +18,14 @@ resource "kubernetes_config_map_v1" "config" {
   }
 }
 
-data "kustomization_build" "argocd" {
-  path = "argocd"
-}
-
-resource "kustomization_resource" "resoures0" {
-  for_each = data.kustomization_build.argocd.ids_prio[0]
-
-  manifest = data.kustomization_build.argocd.manifests[each.value]
+resource "kubernetes_manifest" "argo_project" {
+  manifest = yamldecode(file("${path.module}/project.yaml"))
 
   depends_on = [kubernetes_namespace.namespace]
 }
 
-resource "kustomization_resource" "resoures1" {
-  for_each = data.kustomization_build.argocd.ids_prio[1]
+resource "kubernetes_manifest"  "argo_application" {
+  manifest = yamldecode(file("${path.module}/application.yaml"))
 
-  manifest = data.kustomization_build.argocd.manifests[each.value]
-
-  depends_on = [kustomization_resource.resoures0]
-}
-
-resource "kustomization_resource" "resoures2" {
-  for_each = data.kustomization_build.argocd.ids_prio[2]
-
-  manifest = data.kustomization_build.argocd.manifests[each.value]
-
-  depends_on = [kustomization_resource.resoures1]
+  depends_on = [kubernetes_manifest.argo_project]
 }
