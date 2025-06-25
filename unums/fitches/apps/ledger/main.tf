@@ -46,13 +46,13 @@ resource "kubernetes_secret" "secret" {
 }
 
 resource "kubernetes_manifest" "argo_project" {
-  manifest = yamldecode(file("${path.module}/argocd/project.yaml"))
+  manifest = yamldecode(file("${path.module}/project.yaml"))
 
   depends_on = [kubernetes_namespace.namespace]
 }
 
 resource "kubernetes_manifest"  "argo_application" {
-  manifest = yamldecode(file("${path.module}/argocd/application.yaml"))
+  manifest = yamldecode(file("${path.module}/application.yaml"))
 
   depends_on = [kubernetes_manifest.argo_project]
 }
