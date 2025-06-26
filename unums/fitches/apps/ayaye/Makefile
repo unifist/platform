@@ -2,7 +2,7 @@ CLUSTER="do-fitches-unum"
 NAMESPACE="ayaye"
 SERVICE="gui"
 LOCAL_PORT=7601
-.PHONY: tfenv init remote install uninstall
+.PHONY: tfenv init install secret uninstall
 
 tfenv:
 	tfenv use 1.10.5
@@ -10,13 +10,11 @@ tfenv:
 init: tfenv
 	terraform init
 
-remote:
-	kubectx ${CLUSTER}
-	@open "http://localhost:${LOCAL_PORT}"
-	kubectl port-forward -n ${NAMESPACE} service/${SERVICE} ${LOCAL_PORT}:http
-
 install: init
 	terraform apply
+
+secret:
+	./secret.sh ${CLUSTER} ${NAMESPACE}
 
 uninstall: init
 	terraform destroy
